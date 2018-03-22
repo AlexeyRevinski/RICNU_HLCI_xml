@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+
+<ricnuplan	xmlns="https://www.w3schools.com"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:schemaLocation="https://www.w3schools.com ..\RICNU-XML-Schemas\ricnuplan.xsd">
+
+	<!-- User Information -->		
+	<user		firstname="SomeUserFN"		lastname="SomeUserLN"		id="12345"/>
+	
+	<!-- Patient Information -->
+	<patient	firstname="SomePatientFN"	lastname="SomePatientLN"	id="54321"/>
+	
+	<!-- State Machine Definition -->
+	<fsm defmode="10">
+	
+		<!-- DEFAULT MODE -->
+		<mode	tag="DEFAULT_MODE"	id="10" defstate="200">
+			
+			<!-- DEFAULT STATE -->
+			<state	id="200"	tag="STATE_NO_CONTROL">
+				<control>
+					<control_non>
+						<ctrl default="true"/>
+					</control_non>
+				</control>
+				<transition		id="30001">
+					<next_state		id="201"/>
+					<event channel="fz"	function="ls" value="-12"/>
+				</transition>
+			</state>
+			
+			<!-- STATE 1 -->
+			<state	id="201"	tag="STANCE">
+				<control>
+					<control_imp>
+						<k>
+							<function_constant>
+								<constant_value value="20"/>
+							</function_constant>
+						</k>
+						<b>
+							<function_constant>
+								<constant_value  value="12"/>
+							</function_constant>
+						</b>
+						<e>
+							<function_constant>
+								<constant_value  value="0"/>
+							</function_constant>
+						</e>
+						<kp>
+							<function_constant>
+								<constant_value  value="10"/>
+							</function_constant>
+						</kp>
+						<ki>
+							<function_constant>
+								<constant_value  value="1"/>
+							</function_constant>
+						</ki>
+					</control_imp>
+				</control>
+				<transition		id="30102">
+					<next_state		id="202"/>
+					<event channel="fz"	function="mr" value="-9"/>
+				</transition>
+			</state>
+			
+			<!-- STATE 2 -->
+			<state	id="202"	tag="SWING1">
+				<control>
+					<control_imp>
+						<k>
+							<function_constant>
+								<constant_value value="20"/>
+							</function_constant>
+						</k>
+						<b>
+							<function_constant>
+								<constant_value  value="25"/>
+							</function_constant>
+						</b>
+						<e>
+							<function_constant>
+								<constant_value  value="80"/>
+							</function_constant>
+						</e>
+						<kp>
+							<function_constant>
+								<constant_value  value="10"/>
+							</function_constant>
+						</kp>
+						<ki>
+							<function_constant>
+								<constant_value  value="1"/>
+							</function_constant>
+						</ki>
+					</control_imp>
+				</control>
+				<transition		id="30203">
+					<next_state		id="203"/>
+					<event channel="em"	function="mr" value="65"/>
+				</transition>
+			</state>
+			
+			<!-- STATE 3 -->
+			<state	id="203"	tag="SWING2">
+				<control>
+					<control_imp>
+						<k>
+							<function_constant>
+								<constant_value value="20"/>
+							</function_constant>
+						</k>
+						<b>
+							<function_constant>
+								<constant_value  value="25"/>
+							</function_constant>
+						</b>
+						<e>
+							<function_constant>
+								<constant_value  value="20"/>
+							</function_constant>
+						</e>
+						<kp>
+							<function_constant>
+								<constant_value  value="10"/>
+							</function_constant>
+						</kp>
+						<ki>
+							<function_constant>
+								<constant_value  value="1"/>
+							</function_constant>
+						</ki>
+					</control_imp>
+				</control>
+				<transition		id="30301">
+					<next_state		id="201"/>
+					<event channel="fz"	function="ls" value="-12"/>
+				</transition>
+			</state>
+			
+			
+		</mode>
+	</fsm>
+</ricnuplan> 
